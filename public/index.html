@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<link rel="shortcut icon" href="#" type="image/x-icon">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Todo List</title>
+	<link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+	<section class="todoapp">
+		<header class="header">
+			<h1>todos</h1>
+			<input type="text" class="new-todo" placeholder="What needs to be done?" autofocus id="task">
+		</header>
+		<!-- This section should be hidden by default and shown when there are todos -->
+		<section class="main">
+			<input class="toggle-all" type="checkbox">
+			<ul class="todo-list" id="todo-list"></ul>
+		</section>
+		<!-- This footer should hidden by default and shown when there are todos -->
+		<footer class="footer">
+			<!-- This should be `0 items left` by default -->
+			<span class="todo-count"><strong id="count">0</strong> item left</span>
+			<!-- Remove this if you don't implement routing -->
+			<ul class="filters">
+				<li>
+					<a class="selected" href="javascript:;" id="all">All</a>
+				</li>
+				<li>
+					<a href="javascript:;" id="active">Active</a>
+				</li>
+				<li>
+					<a href="javascript:;" id="completed">Completed</a>
+				</li>
+			</ul>
+			<!-- Hidden if no completed items are left ↓ -->
+			<button class="clear-completed">Clear completed</button>
+		</footer>
+	</section>
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/template-web.js"></script>
+	<!-- 列表模板 -->
+	<script type="text/html" id="taskTpl">
+			{{each tasks}}
+			<li class="{{$value.completed}}">
+				<div class="view">
+					<input class="toggle" type="checkbox">
+					<label>{{$value.title}}</label>
+					<button class="destroy" data-id="{{$value.id}}"></button>
+				</div>
+				<input class="edit">
+			</li>
+			{{/each}}
+        </script>
+	<script type="text/javascript" src="./js/index.js"></script>
+</body>
+
+</html>
